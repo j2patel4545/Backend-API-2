@@ -36,7 +36,7 @@ export const loginStudent = async (req, res) => {
             return res.status(404).json({ message: "Invalid email or mobile number" });
         }
         const token = jwt.sign({ id: student._id }, JWT_SECRET, { expiresIn: '1h' });
-        res.status(200).json({ message: "Login successful", token });
+        res.status(200).json({ message: "Login successful", token, student });
     } catch (error) {
         res.status(500).json({ message: "Server error" });
     }
